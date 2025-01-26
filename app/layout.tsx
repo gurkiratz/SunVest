@@ -9,10 +9,9 @@ import './globals.css'
 import { Sidebar } from '@/components/custom/sidebar'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://gemini.vercel.ai'),
-  title: 'Cyberhacked',
-  description:
-    'Test your cybersecurity skills against a simulated hacker in CyberHacked.',
+  metadataBase: new URL('https://sunvest.vercel.app'),
+  title: 'Sunvest',
+  description: "SunLife's digital bridge to youth financial empowerment.",
 }
 
 export default async function RootLayout({
