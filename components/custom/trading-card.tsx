@@ -7,6 +7,10 @@ import {
   LineChart,
   DollarSign,
   InfoIcon,
+  Instagram,
+  Copy,
+  CheckCheck,
+  X,
 } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -25,6 +29,13 @@ import {
 } from '@/components/ui/popover'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { toast } from 'sonner'
+import ReactConfetti from 'react-confetti'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 
 // Mock ETF data with icons
 export const mockETFData = {
@@ -44,6 +55,10 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
   const [quantity, setQuantity] = useState('')
   const [marketPrice, setMarketPrice] = useState(0)
   const [isReviewMode, setIsReviewMode] = useState(false)
+  const [showConfetti, setShowConfetti] = useState(false)
+  const [showShareDialog, setShowShareDialog] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const referralLink = 'student.sunlife.co/referral?code=c4af32'
 
   // Calculate estimated cost
   const estimatedCost = marketPrice * Number(quantity) || 0
@@ -74,6 +89,12 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
           backgroundColor: 'lightgreen',
         },
       })
+      // Show confetti and share dialog
+      setShowConfetti(true)
+      setTimeout(() => {
+        setShowConfetti(false)
+        setShowShareDialog(true)
+      }, 3000)
       // Reset form
       setSymbol('')
       setQuantity('')
@@ -91,10 +112,75 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
     }
   }
 
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(referralLink)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+      toast.success('Referral link copied!')
+    } catch (err) {
+      toast.error('Failed to copy link')
+    }
+  }
+
   return (
     <Card className="p-6">
+      {showConfetti && <ReactConfetti recycle={false} />}
+      <Dialog open={showShareDialog} onOpenChange={setShowShareDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold mb-4">
+              Share Your Investment Success! 🎉
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6">
+            <p className="text-muted-foreground">
+              Share your success and earn rewards! Refer a friend and you both
+              receive a $20 bonus on top of your investment.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Button
+                variant="outline"
+                className="flex items-center gap-2"
+                onClick={() =>
+                  window.open(
+                    `https://twitter.com/intent/tweet?text=Just made a smart investment with Sunlife! Join me and get a $20 bonus: ${referralLink}`,
+                    '_blank'
+                  )
+                }
+              >
+                <X className="w-5 h-5" />
+                Share on X
+              </Button>
+              <Button
+                variant="outline"
+                className="flex items-center gap-2"
+                onClick={() => window.open(`https://instagram.com`, '_blank')}
+              >
+                <Instagram className="w-5 h-5" />
+                Share on Instagram
+              </Button>
+            </div>
+            <div className="flex items-center gap-2 p-3 bg-muted rounded-lg">
+              <Input value={referralLink} readOnly className="flex-1" />
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleCopyLink}
+                className="shrink-0"
+              >
+                {copied ? (
+                  <CheckCheck className="w-4 h-4" />
+                ) : (
+                  <Copy className="w-4 h-4" />
+                )}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
       <div className="flex items-center gap-2 mb-4">
-        <h3 className="text-lg font-semibold">Trade ETFs</h3>
+        <h3 className="text-lg font-semibold">Invest in ETFs, Bonds, Stocks</h3>
         <Popover>
           <PopoverTrigger>
             <InfoIcon className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />

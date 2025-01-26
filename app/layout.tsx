@@ -3,9 +3,9 @@ import { Toaster } from 'sonner'
 
 import { Navbar } from '@/components/custom/navbar'
 import { ThemeProvider } from '@/components/custom/theme-provider'
+import { Footer } from '@/components/custom/footer'
 
 import './globals.css'
-import Footer from '@/components/Footer'
 import { Sidebar } from '@/components/custom/sidebar'
 
 export const metadata: Metadata = {
@@ -29,10 +29,13 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Toaster position="top-center" />
-          {/* <Navbar /> */}
+          <Toaster position="bottom-center" />
+          <Navbar />
           {/* <Sidebar /> */}
-          {children}
+          <div className="min-h-screen flex flex-col pt-16">
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

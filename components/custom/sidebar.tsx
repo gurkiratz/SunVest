@@ -6,7 +6,7 @@ export const Sidebar = async () => {
   let session = await auth()
 
   return (
-    <div className="w-64 bg-white dark:bg-gray-800 shadow-lg">
+    <div className="w-64 bg-white dark:bg-gray-800 shadow-lg h-full">
       <div className="p-4 space-y-4">
         {/* User Profile Section */}
         <div className="flex flex-col items-center pb-6 border-b dark:border-gray-700">
