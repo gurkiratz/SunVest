@@ -6,10 +6,10 @@ import { X, Youtube, Linkedin } from 'lucide-react'
 export const Navbar = async () => {
   return (
     <>
-      <div className="bg-background/80 backdrop-blur-sm fixed top-0 left-0 w-full py-4 px-6 justify-between flex flex-row items-center z-30 border-b">
+      <div className="bg-b`ackground/80 backdrop-blur-sm fixed top-0 left-0 w-full py-4 px-6 justify-between flex flex-row items-center z-30 border-b">
         <div className="flex flex-row gap-3 items-center">
           <Link href={'/'} className="flex flex-row gap-2 items-center">
-            <Image src="/logo.png" height={24} width={24} alt="Sunvest logo" />
+            {/* <Image src="/logo.png" height={24} width={24} alt="Sunvest logo" /> */}
             <span className="text-xl font-semibold">
               Sun
               <span className="bg-gradient-to-r from-yellow-400 to-green-700 bg-clip-text text-transparent">
@@ -27,22 +27,22 @@ export const Navbar = async () => {
             Features
           </Link>
           <Link
-            href="/#learn"
+            href="/learn"
             className="hover:text-yellow-500 transition-colors"
           >
             Learn
           </Link>
           <Link
-            href="/#trading"
+            href="/dashboard"
             className="hover:text-yellow-500 transition-colors"
           >
-            Trading
+            Invest
           </Link>
           <Link
-            href="/#pricing"
+            href="/community"
             className="hover:text-yellow-500 transition-colors"
           >
-            Pricing
+            Community
           </Link>
           <Link
             href="/#about"

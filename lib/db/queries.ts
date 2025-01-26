@@ -5,13 +5,20 @@ import { desc, eq } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 
-import { user, chat, User, reservation } from './schema'
+import {
+  user,
+  chat,
+  User,
+  reservation,
+  portfolioTimeframe,
+  portfolio,
+} from './schema'
 
 // Optionally, if not using email/pass login, you can
 // use the Drizzle adapter for Auth.js / NextAuth
 // https://authjs.dev/reference/adapter/drizzle
 let client = postgres(`${process.env.POSTGRES_URL!}?sslmode=require`)
-let db = drizzle(client)
+export let db = drizzle(client)
 
 export async function getUser(email: string): Promise<Array<User>> {
   try {
@@ -27,7 +34,38 @@ export async function createUser(email: string, password: string) {
   let hash = hashSync(password, salt)
 
   try {
-    return await db.insert(user).values({ email, password: hash })
+    const [newUser] = await db
+      .insert(user)
+      .values({ email, password: hash })
+      .returning({ id: user.id })
+
+    // Create initial portfolio
+    const [newPortfolio] = await db
+      .insert(portfolio)
+      .values({
+        //@ts-ignore
+        userId: newUser.id,
+        currentBalance: 100000.0,
+        buyingPower: 100000.0,
+        lastUpdated: new Date(),
+      })
+      .returning({ id: portfolio.id })
+
+    // Create timeframe records
+    const timeframeTypes = ['1D', '1M', '1Y', 'All']
+    await Promise.all(
+      timeframeTypes.map((timeframe) =>
+        db.insert(portfolioTimeframe).values({
+          portfolioId: newPortfolio.id,
+          timeframe,
+          labels: [],
+          data: [],
+          lastUpdated: new Date(),
+        })
+      )
+    )
+
+    return newUser
   } catch (error) {
     console.error('Failed to create user in database')
     throw error

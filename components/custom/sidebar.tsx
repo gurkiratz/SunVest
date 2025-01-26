@@ -13,7 +13,7 @@ export const Sidebar = async () => {
           <div className="w-20 h-20 rounded-full bg-gray-200 dark:bg-gray-700 mb-3 overflow-hidden">
             <img
               src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${
-                session?.user?.email?.slice(0, 5) || 'Felix'
+                session?.user?.email?.slice(0, 4) || 'Felix'
               }`}
               alt="User Avatar"
               className="w-full h-full object-cover"

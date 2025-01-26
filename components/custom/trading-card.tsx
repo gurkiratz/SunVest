@@ -78,12 +78,26 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
     setIsReviewMode(false)
   }
 
-  const handleConfirmOrder = () => {
+  const handleConfirmOrder = async () => {
     try {
-      // Simulating potential failure with random chance
-      if (Math.random() > 0.5) {
-        throw new Error('Order processing failed')
+      const response = await fetch('/api/orders/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          asset: symbol,
+          orderType: selectedTab.toUpperCase(),
+          quantity: Number(quantity),
+          source: 'Web',
+        }),
+      })
+
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.message || 'Failed to process order')
       }
+
       toast.success(`${selectedTab.toUpperCase()} order confirmed!`, {
         style: {
           backgroundColor: 'lightgreen',
@@ -101,6 +115,7 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
       setMarketPrice(0)
       setIsReviewMode(false)
     } catch (error) {
+      console.log(error)
       toast.error(
         `Failed to ${selectedTab.toLowerCase()} order. Please try again.`,
         {
@@ -330,6 +345,11 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
               value={estimatedCost ? `$${estimatedCost.toFixed(2)}` : '-'}
               disabled
             />
+            {estimatedCost > buyingPower && (
+              <p className="text-red-500 text-sm mt-1">
+                Insufficient buying power for this order
+              </p>
+            )}
           </div>
 
           <Button

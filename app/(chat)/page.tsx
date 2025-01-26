@@ -39,7 +39,7 @@ export default function Page() {
               className="border-yellow-400 text-yellow-600 hover:bg-yellow-100"
               asChild
             >
-              <Link href="#learn-more">Learn More</Link>
+              <Link href="/learn">Learn More</Link>
             </Button>
           </div>
         </motion.div>
@@ -85,56 +85,8 @@ export default function Page() {
             </p>
           </motion.div>
         </div>
-
-        {/* Social Program Section */}
-        <div
-          id="learn-more"
-          className="bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-xl"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-green-500 bg-clip-text text-transparent">
-                Invest Smarter Together
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                Join our social investing program and learn from successful
-                investors. Share strategies, get tips, and earn rewards while
-                building your wealth.
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center text-gray-600 dark:text-gray-300">
-                  <span className="bg-yellow-400 p-1 rounded-full mr-3">✓</span>
-                  Earn $50 for every friend who joins
-                </li>
-                <li className="flex items-center text-gray-600 dark:text-gray-300">
-                  <span className="bg-yellow-400 p-1 rounded-full mr-3">✓</span>
-                  Access exclusive investment insights
-                </li>
-                <li className="flex items-center text-gray-600 dark:text-gray-300">
-                  <span className="bg-yellow-400 p-1 rounded-full mr-3">✓</span>
-                  Join community challenges and events
-                </li>
-              </ul>
-              <Button
-                className="bg-green-500 hover:bg-green-600 text-white"
-                size="lg"
-                asChild
-              >
-                <Link href="/register">Join Our Community</Link>
-              </Button>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-green-500/20 rounded-3xl transform rotate-3"></div>
-              <img
-                src="/images/demo-thumbnail.png"
-                alt="Community Dashboard"
-                className="rounded-3xl shadow-2xl relative z-10"
-              />
-            </div>
-          </div>
-        </div>
         {/* Paper Trading Platform Section */}
-        <div className="mt-20 bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-xl">
+        <div className="mb-20 bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-green-500 bg-clip-text text-transparent">
@@ -174,8 +126,55 @@ export default function Page() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-green-500/20 rounded-3xl transform -rotate-3"></div>
               <img
-                src="/images/demo-thumbnail.png"
+                src="https://images.unsplash.com/photo-1518186233392-c232efbf2373?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Trading Platform Interface"
+                className="rounded-3xl shadow-2xl relative z-10"
+              />
+            </div>
+          </div>
+        </div>
+        {/* Social Program Section */}
+        <div
+          id="learn-more"
+          className="bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-xl"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-green-500 bg-clip-text text-transparent">
+                Invest Smarter Together
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                Join our social investing program and learn from successful
+                investors. Share strategies, get tips, and earn rewards while
+                building your wealth.
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center text-gray-600 dark:text-gray-300">
+                  <span className="bg-yellow-400 p-1 rounded-full mr-3">✓</span>
+                  Earn $50 for every friend who joins
+                </li>
+                <li className="flex items-center text-gray-600 dark:text-gray-300">
+                  <span className="bg-yellow-400 p-1 rounded-full mr-3">✓</span>
+                  Access exclusive investment insights
+                </li>
+                <li className="flex items-center text-gray-600 dark:text-gray-300">
+                  <span className="bg-yellow-400 p-1 rounded-full mr-3">✓</span>
+                  Join community challenges and events
+                </li>
+              </ul>
+              <Button
+                className="bg-green-500 hover:bg-green-600 text-white"
+                size="lg"
+                asChild
+              >
+                <Link href="/community">Join Our Community</Link>
+              </Button>
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-green-500/20 rounded-3xl transform rotate-3"></div>
+              <img
+                src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Community Dashboard"
                 className="rounded-3xl shadow-2xl relative z-10"
               />
             </div>
