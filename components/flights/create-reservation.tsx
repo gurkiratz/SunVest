@@ -32,7 +32,7 @@ export function CreateReservation({ reservation = SAMPLE }) {
             </span>
             {reservation.departure.cityName} to {reservation.arrival.cityName}
             <span className="no-skeleton text-foreground/50"> at </span>{" "}
-            <span className="no-skeleton text-emerald-600 font-medium">
+            <span className="no-skeleton font-medium text-emerald-600">
               ${reservation.totalPriceInUSD} USD
               <span className="no-skeleton text-foreground/50 ">?</span>
             </span>
@@ -40,24 +40,24 @@ export function CreateReservation({ reservation = SAMPLE }) {
 
           <div className="flex flex-row gap-6">
             <div className="flex flex-col gap-1">
-              <div className="text font-medium sm:text-base text-sm">Seats</div>
-              <div className="text-muted-foreground sm:text-base text-sm">
+              <div className="text text-sm font-medium sm:text-base">Seats</div>
+              <div className="text-sm text-muted-foreground sm:text-base">
                 {reservation.seats.join(", ")}
               </div>
             </div>
 
             <div className="flex flex-col gap-1">
-              <div className="text sm:text-base text-sm font-medium">
+              <div className="text text-sm font-medium sm:text-base">
                 Flight Number
               </div>
-              <div className="text sm:text-base text-sm text-muted-foreground">
+              <div className="text text-sm text-muted-foreground sm:text-base">
                 {reservation.flightNumber}
               </div>
             </div>
 
             <div className="flex flex-col gap-1">
-              <div className="text font-medium sm:text-base text-sm">Date</div>
-              <div className="text text-muted-foreground sm:text-base text-sm">
+              <div className="text text-sm font-medium sm:text-base">Date</div>
+              <div className="text text-sm text-muted-foreground sm:text-base">
                 {format(new Date(reservation.arrival.timestamp), "dd LLL yyyy")}
               </div>
             </div>

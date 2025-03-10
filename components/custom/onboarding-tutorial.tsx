@@ -64,7 +64,7 @@ export function OnboardingTutorial() {
   return (
     <div className="fixed inset-0 z-50 bg-black/50">
       <div
-        className={`fixed p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-sm ${
+        className={`fixed max-w-sm rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800 ${
           step.position === 'top'
             ? 'bottom-4'
             : step.position === 'bottom'
@@ -74,11 +74,11 @@ export function OnboardingTutorial() {
             : 'left-4'
         } mx-4`}
       >
-        <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+        <h3 className="mb-2 text-lg font-semibold">{step.title}</h3>
+        <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
           {step.description}
         </p>
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <div className="text-sm text-gray-500">
             Step {currentStep + 1} of {tutorialSteps.length}
           </div>

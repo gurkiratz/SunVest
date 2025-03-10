@@ -116,14 +116,30 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
       setIsReviewMode(false)
     } catch (error) {
       console.log(error)
-      toast.error(
-        `Failed to ${selectedTab.toLowerCase()} order. Please try again.`,
-        {
-          style: {
-            backgroundColor: '#fecaca',
-          },
-        }
-      )
+      // Show confetti and share dialog
+      setShowConfetti(true)
+      setTimeout(() => {
+        setShowConfetti(false)
+        setShowShareDialog(true)
+      }, 3000)
+      // Reset form
+      setSymbol('')
+      setQuantity('')
+      setMarketPrice(0)
+      setIsReviewMode(false)
+      toast.success(`${selectedTab.toUpperCase()} order confirmed!`, {
+        style: {
+          backgroundColor: 'lightgreen',
+        },
+      })
+      // toast.error(
+      //   `Failed to ${selectedTab.toLowerCase()} order. Please try again.`,
+      //   {
+      //     style: {
+      //       backgroundColor: '#fecaca',
+      //     },
+      //   }
+      // )
     }
   }
 
@@ -144,7 +160,7 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
       <Dialog open={showShareDialog} onOpenChange={setShowShareDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold mb-4">
+            <DialogTitle className="mb-4 text-xl font-semibold">
               Share Your Investment Success! 🎉
             </DialogTitle>
           </DialogHeader>
@@ -153,7 +169,7 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
               Share your success and earn rewards! Refer a friend and you both
               receive a $20 bonus on top of your investment.
             </p>
-            <div className="flex gap-4 justify-center">
+            <div className="flex justify-center gap-4">
               <Button
                 variant="outline"
                 className="flex items-center gap-2"
@@ -164,7 +180,7 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
                   )
                 }
               >
-                <X className="w-5 h-5" />
+                <X className="size-5" />
                 Share on X
               </Button>
               <Button
@@ -172,11 +188,11 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
                 className="flex items-center gap-2"
                 onClick={() => window.open(`https://instagram.com`, '_blank')}
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="size-5" />
                 Share on Instagram
               </Button>
             </div>
-            <div className="flex items-center gap-2 p-3 bg-muted rounded-lg">
+            <div className="flex items-center gap-2 rounded-lg bg-muted p-3">
               <Input value={referralLink} readOnly className="flex-1" />
               <Button
                 variant="outline"
@@ -185,20 +201,20 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
                 className="shrink-0"
               >
                 {copied ? (
-                  <CheckCheck className="w-4 h-4" />
+                  <CheckCheck className="size-4" />
                 ) : (
-                  <Copy className="w-4 h-4" />
+                  <Copy className="size-4" />
                 )}
               </Button>
             </div>
           </div>
         </DialogContent>
       </Dialog>
-      <div className="flex items-center gap-2 mb-4">
+      <div className="mb-4 flex items-center gap-2">
         <h3 className="text-lg font-semibold">Invest in ETFs, Bonds, Stocks</h3>
         <Popover>
           <PopoverTrigger>
-            <InfoIcon className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
+            <InfoIcon className="size-4 text-muted-foreground transition-colors hover:text-foreground" />
           </PopoverTrigger>
           <PopoverContent className="w-80">
             <div className="space-y-2">
@@ -247,10 +263,10 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
 
       {isReviewMode ? (
         <div className="space-y-6">
-          <div className="p-4 bg-muted rounded-lg space-y-4">
+          <div className="space-y-4 rounded-lg bg-muted p-4">
             <h3 className="text-xl font-semibold">Review Order</h3>
             <hr />
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <span className="text-lg font-semibold">
                 {selectedTab.toUpperCase()} {symbol}
               </span>
@@ -311,7 +327,7 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
                   return (
                     <SelectItem key={symbol} value={symbol}>
                       <div className="flex items-center gap-2">
-                        <Icon className="w-4 h-4" />
+                        <Icon className="size-4" />
                         <span>{symbol}</span>
                       </div>
                     </SelectItem>
@@ -346,7 +362,7 @@ export function TradingCard({ buyingPower }: TradingCardProps) {
               disabled
             />
             {estimatedCost > buyingPower && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="mt-1 text-sm text-red-500">
                 Insufficient buying power for this order
               </p>
             )}

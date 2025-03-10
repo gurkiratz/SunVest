@@ -28,8 +28,8 @@ export function Row({ row = SAMPLE.arrival, type = "arrival" }) {
     <div className="flex flex-row justify-between">
       <div className="flex flex-row">
         <div className="flex flex-col gap-1">
-          <div className="flex flex-row gap-2 items-center">
-            <div className="bg-foreground text-background rounded-full size-fit">
+          <div className="flex flex-row items-center gap-2">
+            <div className="size-fit rounded-full bg-foreground text-background">
               {type === "arrival" ? (
                 <div className="rotate-90">
                   <ArrowUpRightSmallIcon size={16} />
@@ -38,23 +38,23 @@ export function Row({ row = SAMPLE.arrival, type = "arrival" }) {
                 <ArrowUpRightSmallIcon size={16} />
               )}
             </div>
-            <div className="text-sm sm:text-base text-muted-foreground">
+            <div className="text-sm text-muted-foreground sm:text-base">
               {row.airportCode}
             </div>
             <div>·</div>
-            <div className="text-sm sm:text-base truncate max-w-32 sm:max-w-64 text-muted-foreground">
+            <div className="max-w-32 truncate text-sm text-muted-foreground sm:max-w-64 sm:text-base">
               {row.airportName}
             </div>
           </div>
 
-          <div className="text-2xl sm:text-3xl font-medium">
+          <div className="text-2xl font-medium sm:text-3xl">
             {format(new Date(row.timestamp), "h:mm a")}
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col gap-1 items-end justify-center mt-auto">
-        <div className="text-sm sm:text-sm bg-amber-400 rounded-md w-fit px-2 text-amber-900">
+      <div className="mt-auto flex flex-col items-end justify-center gap-1">
+        <div className="w-fit rounded-md bg-amber-400 px-2 text-sm text-amber-900 sm:text-sm">
           {row.gate}
         </div>
         <div className="text-sm text-muted-foreground">
@@ -67,7 +67,7 @@ export function Row({ row = SAMPLE.arrival, type = "arrival" }) {
 
 export function FlightStatus({ flightStatus = SAMPLE }) {
   return (
-    <div className="flex flex-col gap-2 bg-muted rounded-lg p-4">
+    <div className="flex flex-col gap-2 rounded-lg bg-muted p-4">
       <div className="flex flex-col gap-1 text-sm">
         <div className="text-muted-foreground">{flightStatus.flightNumber}</div>
         <div className="text-lg font-medium">
@@ -79,7 +79,7 @@ export function FlightStatus({ flightStatus = SAMPLE }) {
 
       <Row row={flightStatus.arrival} type="departure" />
 
-      <div className="flex flex-row gap-2 items-center">
+      <div className="flex flex-row items-center gap-2">
         <div className="text-xs text-muted-foreground ">
           {differenceInHours(
             new Date(flightStatus.arrival.timestamp),
@@ -91,7 +91,7 @@ export function FlightStatus({ flightStatus = SAMPLE }) {
         <div className="text-xs text-muted-foreground">
           {flightStatus.totalDistanceInMiles} mi
         </div>
-        <div className="h-px grow bg-muted-foreground/20 ml-2" />
+        <div className="ml-2 h-px grow bg-muted-foreground/20" />
       </div>
 
       <Row row={flightStatus.departure} type="arrival" />

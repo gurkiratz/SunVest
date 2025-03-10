@@ -12,8 +12,8 @@ export const PreviewAttachment = ({
   const { name, url, contentType } = attachment;
 
   return (
-    <div className="flex flex-col gap-2 max-w-16">
-      <div className="h-20 w-16 bg-muted rounded-md relative flex flex-col items-center justify-center">
+    <div className="flex max-w-16 flex-col gap-2">
+      <div className="relative flex h-20 w-16 flex-col items-center justify-center rounded-md bg-muted">
         {contentType ? (
           contentType.startsWith("image") ? (
             // NOTE: it is recommended to use next/image for images
@@ -22,7 +22,7 @@ export const PreviewAttachment = ({
               key={url}
               src={url}
               alt={name ?? "An image attachment"}
-              className="rounded-md size-full object-cover"
+              className="size-full rounded-md object-cover"
             />
           ) : (
             <div className=""></div>
@@ -32,13 +32,13 @@ export const PreviewAttachment = ({
         )}
 
         {isUploading && (
-          <div className="animate-spin absolute text-zinc-500">
+          <div className="absolute animate-spin text-zinc-500">
             <LoaderIcon />
           </div>
         )}
       </div>
 
-      <div className="text-xs text-zinc-500 max-w-16 truncate">{name}</div>
+      <div className="max-w-16 truncate text-xs text-zinc-500">{name}</div>
     </div>
   );
 };

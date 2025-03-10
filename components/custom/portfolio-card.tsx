@@ -14,6 +14,38 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 
+const portfolioData = {
+  currentBalance: 100000.0,
+  buyingPower: 25000.0,
+  timeframes: {
+    '1D': {
+      labels: [
+        '9:30',
+        '10:30',
+        '11:30',
+        '12:30',
+        '13:30',
+        '14:30',
+        '15:30',
+        '16:00',
+      ],
+      data: [100000, 101200, 102400, 101800, 103000, 102500, 104000, 103500],
+    },
+    '1M': {
+      labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+      data: [100000, 102000, 105000, 103500],
+    },
+    '1Y': {
+      labels: ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov'],
+      data: [100000, 110000, 108000, 115000, 112000, 103500],
+    },
+    All: {
+      labels: ['2020', '2021', '2022', '2023', '2024'],
+      data: [80000, 90000, 95000, 98000, 103500],
+    },
+  },
+}
+
 export function PortfolioCard() {
   const [selectedTimeframe, setSelectedTimeframe] = useState('1D')
   const { data: portfolio } = useSWR<Portfolio>('/api/portfolio', fetcher)
@@ -42,9 +74,9 @@ export function PortfolioCard() {
     return (
       <Card className="p-6">
         <div className="animate-pulse space-y-4">
-          <div className="h-8 w-48 bg-gray-200 rounded"></div>
-          <div className="h-12 w-64 bg-gray-200 rounded"></div>
-          <div className="h-[400px] bg-gray-200 rounded"></div>
+          <div className="h-8 w-48 rounded bg-gray-200"></div>
+          <div className="h-12 w-64 rounded bg-gray-200"></div>
+          <div className="h-[400px] rounded bg-gray-200"></div>
         </div>
       </Card>
     )
@@ -52,13 +84,13 @@ export function PortfolioCard() {
 
   return (
     <Card className="p-6">
-      <div className="flex justify-between items-start mb-6">
+      <div className="mb-6 flex items-start justify-between">
         <div>
-          <div className="flex items-center gap-2 mb-2">
+          <div className="mb-2 flex items-center gap-2">
             <h3 className="text-lg font-semibold">Your Portfolio</h3>
             <Popover>
               <PopoverTrigger>
-                <InfoIcon className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
+                <InfoIcon className="size-4 text-muted-foreground transition-colors hover:text-foreground" />
               </PopoverTrigger>
               <PopoverContent className="w-80">
                 <div className="space-y-2">
@@ -66,8 +98,8 @@ export function PortfolioCard() {
                   <p className="text-sm text-muted-foreground">
                     Your portfolio shows your total investment value across all
                     assets. It includes stocks, ETFs, and other securities. The
-                    graph displays your portfolio's performance over different
-                    time periods.
+                    graph displays your portfolio&apos;s performance over
+                    different time periods.
                   </p>
                   <div className="text-sm">
                     <div className="flex justify-between py-1">
@@ -75,7 +107,9 @@ export function PortfolioCard() {
                         Total Value:
                       </span>
                       <span className="font-medium">
-                        ${portfolio.currentBalance.toLocaleString()}
+                        $
+                        {portfolioData.currentBalance.toLocaleString() ||
+                          portfolio.currentBalance.toLocaleString()}
                       </span>
                     </div>
                     <div className="flex justify-between py-1">
@@ -83,7 +117,9 @@ export function PortfolioCard() {
                         Buying Power:
                       </span>
                       <span className="font-medium">
-                        ${portfolio.buyingPower.toLocaleString()}
+                        $
+                        {portfolioData.buyingPower.toLocaleString() ||
+                          portfolio.buyingPower.toLocaleString()}
                       </span>
                     </div>
                   </div>
@@ -92,7 +128,9 @@ export function PortfolioCard() {
             </Popover>
           </div>
           <div className="text-3xl font-bold">
-            ${portfolio.currentBalance.toLocaleString()}
+            $
+            {portfolioData.currentBalance.toLocaleString() ||
+              portfolio.currentBalance.toLocaleString()}
           </div>
         </div>
         <div className="space-x-2">

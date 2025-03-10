@@ -6,17 +6,17 @@ export const Sidebar = async () => {
   let session = await auth()
 
   return (
-    <div className="w-64 bg-white dark:bg-gray-800 shadow-lg h-full">
-      <div className="p-4 space-y-4">
+    <div className="h-full w-64 bg-white shadow-lg dark:bg-gray-800">
+      <div className="space-y-4 p-4">
         {/* User Profile Section */}
-        <div className="flex flex-col items-center pb-6 border-b dark:border-gray-700">
-          <div className="w-20 h-20 rounded-full bg-gray-200 dark:bg-gray-700 mb-3 overflow-hidden">
+        <div className="flex flex-col items-center border-b pb-6 dark:border-gray-700">
+          <div className="mb-3 size-20 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
             <img
               src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${
                 session?.user?.email?.slice(0, 4) || 'Felix'
               }`}
               alt="User Avatar"
-              className="w-full h-full object-cover"
+              className="size-full object-cover"
             />
           </div>
           {/* <h3 className="text-lg font-semibold">

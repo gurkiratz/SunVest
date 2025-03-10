@@ -3,81 +3,141 @@
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function LearnPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-6xl">
-      <h1 className="text-5xl font-bold mb-8 bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text">
+    <div className="container mx-auto max-w-6xl px-4 py-12">
+      <h1 className="mb-8 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-5xl font-bold text-transparent">
         Level Up Your Investment Game 🚀
       </h1>
 
       <div className="space-y-12">
         {/* Platform Introduction */}
         <section>
-          <h2 className="text-3xl font-bold mb-6">
-            Why We're Different (fr fr)
+          <h2 className="mb-6 text-3xl font-bold">
+            Why We&apos;re Different (fr fr)
           </h2>
           <Card className="p-6">
-            <p className="text-lg mb-4">
-              No cap - we're here to help you secure the bag through smart
+            <p className="mb-4 text-lg">
+              No cap - we&apos;re here to help you secure the bag through smart
               investing. Our platform is built different, making it easy to
               start your investment journey without the confusing finance
               jargon.
             </p>
-            <div className="grid md:grid-cols-3 gap-6 mt-6">
-              <div className="p-4 bg-secondary rounded-lg">
-                <h3 className="font-bold mb-2">Easy to Start 💫</h3>
+            <div className="mt-6 grid gap-6 md:grid-cols-3">
+              <div className="rounded-lg bg-secondary p-4">
+                <h3 className="mb-2 font-bold">Easy to Start 💫</h3>
                 <p>
                   Begin with just a few clicks - no complicated forms or
                   waitlists
                 </p>
               </div>
-              <div className="p-4 bg-secondary rounded-lg">
-                <h3 className="font-bold mb-2">Learn as You Go 📚</h3>
+              <div className="rounded-lg bg-secondary p-4">
+                <h3 className="mb-2 font-bold">Learn as You Go 📚</h3>
                 <p>
                   Built-in tips and guides to help you make informed decisions
                 </p>
               </div>
-              <div className="p-4 bg-secondary rounded-lg">
-                <h3 className="font-bold mb-2">Smart Tools 🛠️</h3>
+              <div className="rounded-lg bg-secondary p-4">
+                <h3 className="mb-2 font-bold">Smart Tools 🛠️</h3>
                 <p>AI-powered insights to help you invest like a pro</p>
               </div>
             </div>
           </Card>
         </section>
 
+        {/* How to Start */}
+        <section>
+          <h2 className="mb-6 text-3xl font-bold">
+            How to Start (It&apos;s Giving Easy)
+          </h2>
+          <Card className="p-6">
+            <div className="grid gap-6 md:grid-cols-4">
+              <div className="text-center">
+                <div className="mb-4 text-4xl">1️⃣</div>
+                <h3 className="mb-2 font-bold">Create Account</h3>
+                <p>Quick signup, no cap</p>
+              </div>
+              <div className="text-center">
+                <div className="mb-4 text-4xl">2️⃣</div>
+                <h3 className="mb-2 font-bold">Add Funds</h3>
+                <p>Secure & easy deposits</p>
+              </div>
+              <div className="text-center">
+                <div className="mb-4 text-4xl">3️⃣</div>
+                <h3 className="mb-2 font-bold">Choose ETFs</h3>
+                <p>Pick your investment vibe</p>
+              </div>
+              <div className="text-center">
+                <div className="mb-4 text-4xl">4️⃣</div>
+                <h3 className="mb-2 font-bold">Watch & Learn</h3>
+                <p>Track your gains</p>
+              </div>
+            </div>
+          </Card>
+        </section>
+
+        {/* Video Tutorial Section */}
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mb-8 text-center"
+          >
+            <h2 className="mb-4 bg-gradient-to-r from-yellow-400 to-green-500 bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
+              Stock Market Crash Course
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Get started with this comprehensive introduction to stock market
+              investing
+            </p>
+          </motion.div>
+          <div className="aspect-w-16 aspect-h-20 overflow-hidden rounded-2xl shadow-2xl">
+            <iframe
+              src="https://www.youtube.com/embed/Xn7KWR9EOGQ"
+              title="Stock Market Basics for Beginners"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="size-full"
+            ></iframe>
+          </div>
+        </div>
+
         {/* Investment Basics */}
         <section>
-          <h2 className="text-3xl font-bold mb-6">
+          <h2 className="mb-6 text-3xl font-bold">
             Investment Basics (The Tea ☕)
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             <Card className="p-6">
-              <h3 className="text-xl font-bold mb-4">
+              <h3 className="mb-4 text-xl font-bold">
                 ETFs - The Main Character
               </h3>
               <p className="mb-4">
                 ETFs (Exchange-Traded Funds) are like playlists of different
                 stocks - instead of buying individual songs (stocks), you get
-                the whole album. They're:
+                the whole album. They&apos;re:
               </p>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-inside list-disc space-y-2">
                 <li>Less risky than single stocks</li>
                 <li>Perfect for beginners</li>
                 <li>Managed by experts</li>
               </ul>
             </Card>
             <Card className="p-6">
-              <h3 className="text-xl font-bold mb-4">
+              <h3 className="mb-4 text-xl font-bold">
                 Risk Management - Stay Safe
               </h3>
               <p className="mb-4">
-                Don't fumble the bag - here's how to invest responsibly:
+                Don&apos;t fumble the bag - here&apos;s how to invest
+                responsibly:
               </p>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-inside list-disc space-y-2">
                 <li>Never invest more than you can afford to lose</li>
                 <li>
-                  Diversify your portfolio (don't put all your eggs in one
+                  Diversify your portfolio (don&apos;t put all your eggs in one
                   basket)
                 </li>
                 <li>Think long-term, not just quick gains</li>
@@ -86,45 +146,14 @@ export default function LearnPage() {
           </div>
         </section>
 
-        {/* How to Start */}
-        <section>
-          <h2 className="text-3xl font-bold mb-6">
-            How to Start (It's Giving Easy)
-          </h2>
-          <Card className="p-6">
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-4xl mb-4">1️⃣</div>
-                <h3 className="font-bold mb-2">Create Account</h3>
-                <p>Quick signup, no cap</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl mb-4">2️⃣</div>
-                <h3 className="font-bold mb-2">Add Funds</h3>
-                <p>Secure & easy deposits</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl mb-4">3️⃣</div>
-                <h3 className="font-bold mb-2">Choose ETFs</h3>
-                <p>Pick your investment vibe</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl mb-4">4️⃣</div>
-                <h3 className="font-bold mb-2">Watch & Learn</h3>
-                <p>Track your gains</p>
-              </div>
-            </div>
-          </Card>
-        </section>
-
         {/* Important Terms */}
         <section>
-          <h2 className="text-3xl font-bold mb-6">
+          <h2 className="mb-6 text-3xl font-bold">
             The Lingo You Need to Know
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             <Card className="p-6">
-              <h3 className="text-xl font-bold mb-4">Investment Terms</h3>
+              <h3 className="mb-4 text-xl font-bold">Investment Terms</h3>
               <dl className="space-y-4">
                 <div>
                   <dt className="font-bold">Portfolio 💼</dt>
@@ -146,7 +175,7 @@ export default function LearnPage() {
               </dl>
             </Card>
             <Card className="p-6">
-              <h3 className="text-xl font-bold mb-4">Platform Features</h3>
+              <h3 className="mb-4 text-xl font-bold">Platform Features</h3>
               <dl className="space-y-4">
                 <div>
                   <dt className="font-bold">AI Assistant 🤖</dt>
@@ -163,7 +192,8 @@ export default function LearnPage() {
                 <div>
                   <dt className="font-bold">Auto-Invest ⚡</dt>
                   <dd>
-                    Set it and forget it - we'll invest for you automatically
+                    Set it and forget it - we&apos;ll invest for you
+                    automatically
                   </dd>
                 </div>
               </dl>
@@ -172,14 +202,14 @@ export default function LearnPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="text-center py-12">
-          <h2 className="text-4xl font-bold mb-6">
+        <section className="py-12 text-center">
+          <h2 className="mb-6 text-4xl font-bold">
             Ready to Start Your Investment Journey?
           </h2>
-          <p className="text-xl mb-8">
+          <p className="mb-8 text-xl">
             Join thousands of other Gen Z investors building their future
           </p>
-          <Button asChild size="lg" className="text-lg px-8 py-6">
+          <Button asChild size="lg" className="px-8 py-6 text-lg">
             <Link href="/register">Start Investing Now 🚀</Link>
           </Button>
         </section>

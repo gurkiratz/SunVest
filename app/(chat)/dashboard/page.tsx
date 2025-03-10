@@ -7,7 +7,7 @@ export default function StocksPage() {
   return (
     <div className="flex flex-col bg-gray-100 dark:bg-gray-900">
       {/* Disclaimer Banner */}
-      <div className="w-full bg-blue-500 text-white py-2 px-4 text-center font-medium flex gap-2 justify-center">
+      <div className="flex w-full justify-center gap-2 bg-blue-500 px-4 py-2 text-center font-medium text-white">
         <CircleAlert /> You are on paper trading, no real money is being used.
       </div>
 

@@ -26,28 +26,28 @@ const SAMPLE = {
 
 export function DisplayBoardingPass({ boardingPass = SAMPLE }) {
   return (
-    <div className="bg-yellow-200 p-4 rounded-lg flex flex-col gap-2">
-      <div className="flex flex-row justify-between items-center relative">
+    <div className="flex flex-col gap-2 rounded-lg bg-yellow-200 p-4">
+      <div className="relative flex flex-row items-center justify-between">
         <div className="flex flex-col gap-0.5">
-          <div className="text-yellow-800 text-sm sm:text-base">
+          <div className="text-sm text-yellow-800 sm:text-base">
             {boardingPass.departure.cityName}
           </div>
-          <div className="text-yellow-800 text-2xl sm:text-3xl font-semibold">
+          <div className="text-2xl font-semibold text-yellow-800 sm:text-3xl">
             {boardingPass.departure.airportCode}
           </div>
         </div>
 
-        <div className="absolute w-full flex flex-row justify-center">
+        <div className="absolute flex w-full flex-row justify-center">
           <div className="text-amber-800">
             <PlaneTakeoffIcon />
           </div>
         </div>
 
         <div className="flex flex-col gap-0.5">
-          <div className="text-yellow-800 text-sm sm:text-base">
+          <div className="text-sm text-yellow-800 sm:text-base">
             {boardingPass.arrival.cityName}
           </div>
-          <div className="text-yellow-800 text-2xl sm:text-3xl font-semibold text-right">
+          <div className="text-right text-2xl font-semibold text-yellow-800 sm:text-3xl">
             {boardingPass.arrival.airportCode}
           </div>
         </div>
@@ -57,7 +57,7 @@ export function DisplayBoardingPass({ boardingPass = SAMPLE }) {
 
       <div className="flex flex-row justify-between">
         <div className="flex flex-col gap-0.5">
-          <div className="text-yellow-900 text-sm font-medium sm:text-base">
+          <div className="text-sm font-medium text-yellow-900 sm:text-base">
             Passenger
           </div>
           <div className="text-lg text-yellow-700">
@@ -66,7 +66,7 @@ export function DisplayBoardingPass({ boardingPass = SAMPLE }) {
         </div>
 
         <div className="flex flex-col gap-0.5">
-          <div className="text-yellow-900 text-sm font-medium sm:text-base">
+          <div className="text-sm font-medium text-yellow-900 sm:text-base">
             Gate
           </div>
           <div className="text-lg text-yellow-700">
@@ -75,7 +75,7 @@ export function DisplayBoardingPass({ boardingPass = SAMPLE }) {
         </div>
 
         <div className="flex flex-col gap-0.5">
-          <div className="text-yellow-900 text-sm font-medium sm:text-base">
+          <div className="text-sm font-medium text-yellow-900 sm:text-base">
             Boards
           </div>
           <div className="text-lg text-yellow-700">

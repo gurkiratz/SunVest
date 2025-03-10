@@ -156,11 +156,11 @@ export function MultimodalInput({
   )
 
   return (
-    <div className="relative w-full flex flex-col gap-4">
+    <div className="relative flex w-full flex-col gap-4">
       {messages.length === 0 &&
         attachments.length === 0 &&
         uploadQueue.length === 0 && (
-          <div className="grid sm:grid-cols-2 gap-4 w-full md:px-0 mx-auto md:max-w-[500px]">
+          <div className="mx-auto grid w-full gap-4 sm:grid-cols-2 md:max-w-[500px] md:px-0">
             {suggestedActions.map((suggestedAction, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -177,7 +177,7 @@ export function MultimodalInput({
                       content: suggestedAction.action,
                     })
                   }}
-                  className="border-none bg-muted/50 w-full text-left border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 rounded-lg p-3 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors flex flex-col"
+                  className="flex w-full flex-col rounded-lg border border-none border-zinc-200 bg-muted/50 p-3 text-left text-sm text-zinc-800 transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800"
                 >
                   <span className="font-medium">{suggestedAction.title}</span>
                   <span className="text-zinc-500 dark:text-zinc-400">
@@ -191,7 +191,7 @@ export function MultimodalInput({
 
       <input
         type="file"
-        className="fixed -top-4 -left-4 size-0.5 opacity-0 pointer-events-none"
+        className="pointer-events-none fixed -left-4 -top-4 size-0.5 opacity-0"
         ref={fileInputRef}
         multiple
         onChange={handleFileChange}
@@ -224,7 +224,7 @@ export function MultimodalInput({
         value={input}
         onChange={handleInput}
         disabled={disabled}
-        className="min-h-[24px] overflow-hidden resize-none rounded-lg text-base bg-muted border-none"
+        className="min-h-[24px] resize-none overflow-hidden rounded-lg border-none bg-muted text-base"
         rows={3}
         onKeyDown={(event) => {
           if (event.key === 'Enter' && !event.shiftKey) {
@@ -241,7 +241,7 @@ export function MultimodalInput({
 
       {isLoading ? (
         <Button
-          className="rounded-full p-1.5 h-fit absolute bottom-2 right-2 m-0.5 text-white"
+          className="absolute bottom-2 right-2 m-0.5 h-fit rounded-full p-1.5 text-white"
           onClick={(event) => {
             event.preventDefault()
             stop()
@@ -251,7 +251,7 @@ export function MultimodalInput({
         </Button>
       ) : (
         <Button
-          className="rounded-full p-1.5 h-fit absolute bottom-2 right-2 m-0.5 text-white"
+          className="absolute bottom-2 right-2 m-0.5 h-fit rounded-full p-1.5 text-white"
           onClick={(event) => {
             event.preventDefault()
             submitForm()

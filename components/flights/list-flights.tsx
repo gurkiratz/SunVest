@@ -87,11 +87,11 @@ export function ListFlights({
   })
 
   return (
-    <div className="rounded-lg bg-muted px-4 py-1.5 flex flex-col">
+    <div className="flex flex-col rounded-lg bg-muted px-4 py-1.5">
       {results.flights.map((flight) => (
         <div
           key={flight.id}
-          className="cursor-pointer flex flex-row border-b dark:border-zinc-700 py-2 last-of-type:border-none group"
+          className="group flex cursor-pointer flex-row border-b py-2 last-of-type:border-none dark:border-zinc-700"
           onClick={() => {
             append({
               role: 'user',
@@ -99,8 +99,8 @@ export function ListFlights({
             })
           }}
         >
-          <div className="flex flex-col w-full gap-0.5 justify-between">
-            <div className="flex flex-row gap-0.5 text-base sm:text-base font-medium group-hover:underline">
+          <div className="flex w-full flex-col justify-between gap-0.5">
+            <div className="flex flex-row gap-0.5 text-base font-medium group-hover:underline sm:text-base">
               <div className="text">
                 {format(new Date(flight.departure.timestamp), 'h:mm a')}
               </div>
@@ -109,15 +109,15 @@ export function ListFlights({
                 {format(new Date(flight.arrival.timestamp), 'h:mm a')}
               </div>
             </div>
-            <div className="text w-fit hidden sm:flex text-sm text-muted-foreground flex-row gap-2">
+            <div className="text hidden w-fit flex-row gap-2 text-sm text-muted-foreground sm:flex">
               <div>{flight.airlines.join(', ')}</div>
             </div>
-            <div className="text sm:hidden text-xs sm:text-sm text-muted-foreground flex flex-row gap-2">
+            <div className="text flex flex-row gap-2 text-xs text-muted-foreground sm:hidden sm:text-sm">
               {flight.airlines.length} stops
             </div>
           </div>
 
-          <div className="flex flex-col gap-0.5 justify-between">
+          <div className="flex flex-col justify-between gap-0.5">
             <div className="flex flex-row gap-2">
               <div className="text-base sm:text-base">
                 {differenceInHours(
@@ -127,20 +127,20 @@ export function ListFlights({
                 hr
               </div>
             </div>
-            <div className="text-xs sm:text-sm text-muted-foreground flex flex-row">
+            <div className="flex flex-row text-xs text-muted-foreground sm:text-sm">
               <div>{flight.departure.airportCode}</div>
               <div>–</div>
               <div>{flight.arrival.airportCode}</div>
             </div>
           </div>
 
-          <div className="flex flex-col w-32 items-end gap-0.5">
+          <div className="flex w-32 flex-col items-end gap-0.5">
             <div className="flex flex-row gap-2">
-              <div className="text-base sm:text-base text-emerald-600 dark:text-emerald-500">
+              <div className="text-base text-emerald-600 dark:text-emerald-500 sm:text-base">
                 ${flight.priceInUSD}
               </div>
             </div>
-            <div className="text-xs sm:text-sm text-muted-foreground flex flex-row">
+            <div className="flex flex-row text-xs text-muted-foreground sm:text-sm">
               Round Trip
             </div>
           </div>

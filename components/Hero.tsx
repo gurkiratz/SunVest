@@ -3,13 +3,13 @@ import Link from 'next/link'
 
 export function Hero() {
   return (
-    <div className="flex flex-col items-center justify-center x-4 text-center max-w-lg">
-      <div className="space-y-6 max-w-3xl">
+    <div className="x-4 flex max-w-lg flex-col items-center justify-center text-center">
+      <div className="max-w-3xl space-y-6">
         {/* <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-600"> */}
-        <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-purple-500 to-yellow-200">
+        <h1 className="bg-gradient-to-r from-yellow-400 via-purple-500 to-yellow-200 bg-clip-text text-4xl font-extrabold tracking-tighter text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
           CyberHacked
         </h1>
-        <p className="text-xl md:text-2xl font-medium text-muted-foreground">
+        <p className="text-xl font-medium text-muted-foreground md:text-2xl">
           Master Social Engineering Defense Through Real-World Simulations
         </p>
         {/* <div className="max-w-xl mx-auto">

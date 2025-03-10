@@ -64,9 +64,9 @@ export function RecentOrders() {
 
   const renderSkeleton = () => (
     <div className="animate-pulse">
-      <div className="flex justify-between items-center mb-6">
-        <div className="h-6 w-32 bg-muted rounded"></div>
-        <div className="h-9 w-48 bg-muted rounded"></div>
+      <div className="mb-6 flex items-center justify-between">
+        <div className="h-6 w-32 rounded bg-muted"></div>
+        <div className="h-9 w-48 rounded bg-muted"></div>
       </div>
       <table className="w-full">
         <thead>
@@ -79,8 +79,8 @@ export function RecentOrders() {
               'Submitted At',
               'Expires At',
             ].map((header) => (
-              <th key={header} className="text-left py-2 px-4">
-                <div className="h-4 w-20 bg-muted rounded"></div>
+              <th key={header} className="px-4 py-2 text-left">
+                <div className="h-4 w-20 rounded bg-muted"></div>
               </th>
             ))}
           </tr>
@@ -89,8 +89,8 @@ export function RecentOrders() {
           {[1, 2, 3].map((i) => (
             <tr key={i} className="border-b">
               {[1, 2, 3, 4, 5, 6].map((j) => (
-                <td key={j} className="py-2 px-4">
-                  <div className="h-4 w-16 bg-muted rounded"></div>
+                <td key={j} className="px-4 py-2">
+                  <div className="h-4 w-16 rounded bg-muted"></div>
                 </td>
               ))}
             </tr>
@@ -107,7 +107,7 @@ export function RecentOrders() {
           renderSkeleton()
         ) : (
           <>
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Recent Orders</h3>
               <Input
                 type="text"
@@ -119,7 +119,7 @@ export function RecentOrders() {
             </div>
 
             {filteredOrders.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="py-8 text-center text-muted-foreground">
                 {(orders || mockOrders).length === 0
                   ? 'No orders. Place an order to see this table populate.'
                   : 'No matching orders found.'}
@@ -129,18 +129,18 @@ export function RecentOrders() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b">
-                      <th className="text-left py-2 px-4 font-medium">Asset</th>
-                      <th className="text-left py-2 px-4 font-medium">
+                      <th className="px-4 py-2 text-left font-medium">Asset</th>
+                      <th className="px-4 py-2 text-left font-medium">
                         Order Type
                       </th>
-                      <th className="text-left py-2 px-4 font-medium">Qty</th>
-                      <th className="text-left py-2 px-4 font-medium">
+                      <th className="px-4 py-2 text-left font-medium">Qty</th>
+                      <th className="px-4 py-2 text-left font-medium">
                         Source
                       </th>
-                      <th className="text-left py-2 px-4 font-medium">
+                      <th className="px-4 py-2 text-left font-medium">
                         Submitted At
                       </th>
-                      <th className="text-left py-2 px-4 font-medium">
+                      <th className="px-4 py-2 text-left font-medium">
                         Expires At
                       </th>
                     </tr>
@@ -148,10 +148,10 @@ export function RecentOrders() {
                   <tbody>
                     {filteredOrders.map((order) => (
                       <tr key={order.id} className="border-b hover:bg-muted/50">
-                        <td className="py-2 px-4">{order.asset}</td>
-                        <td className="py-2 px-4">
+                        <td className="px-4 py-2">{order.asset}</td>
+                        <td className="px-4 py-2">
                           <span
-                            className={`inline-block px-2 py-1 rounded text-xs font-medium ${
+                            className={`inline-block rounded px-2 py-1 text-xs font-medium ${
                               order.orderType === 'BUY'
                                 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100'
                                 : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'
@@ -160,12 +160,12 @@ export function RecentOrders() {
                             {order.orderType}
                           </span>
                         </td>
-                        <td className="py-2 px-4">{order.quantity}</td>
-                        <td className="py-2 px-4">{order.source}</td>
-                        <td className="py-2 px-4">
+                        <td className="px-4 py-2">{order.quantity}</td>
+                        <td className="px-4 py-2">{order.source}</td>
+                        <td className="px-4 py-2">
                           {formatDate(order.submittedAt.toString())}
                         </td>
-                        <td className="py-2 px-4">
+                        <td className="px-4 py-2">
                           {formatDate(order.expiresAt.toString())}
                         </td>
                       </tr>

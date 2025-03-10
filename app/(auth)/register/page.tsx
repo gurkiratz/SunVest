@@ -8,32 +8,30 @@ import { toast } from 'sonner'
 import { AuthForm } from '@/components/custom/auth-form'
 import { SubmitButton } from '@/components/custom/submit-button'
 
-import { register, RegisterActionState } from '../actions'
+import { login, LoginActionState } from '../actions'
 import { Hero } from '@/components/Hero'
 
 export default function Page() {
   const router = useRouter()
 
   const [email, setEmail] = useState('')
-  const [state, formAction] = useActionState<RegisterActionState, FormData>(
-    register,
+
+  const [state, formAction] = useActionState<LoginActionState, FormData>(
+    login,
     {
       status: 'idle',
     }
   )
 
   useEffect(() => {
-    if (state.status === 'user_exists') {
-      toast.error('Account already exists')
-    } else if (state.status === 'failed') {
-      toast.error('Failed to create account')
+    if (state.status === 'failed') {
+      toast.error('Invalid credentials!')
     } else if (state.status === 'invalid_data') {
       toast.error('Failed validating your submission!')
     } else if (state.status === 'success') {
-      toast.success('Account created successfully')
       router.refresh()
     }
-  }, [state, router])
+  }, [state.status, router])
 
   const handleSubmit = (formData: FormData) => {
     setEmail(formData.get('email') as string)
@@ -41,9 +39,29 @@ export default function Page() {
   }
 
   return (
-    <div className="flex flex-col sm:flex-row gap-20 h-screen w-screen items-center justify-center bg-background">
-      <Hero />
-      <div className="w-full max-w-md overflow-hidden rounded-2xl gap-12 flex flex-col">
+    <div className="flex h-screen w-screen flex-col items-center justify-center gap-20 bg-background sm:flex-row">
+      <div className="flex w-full max-w-md flex-col gap-12 rounded-2xl">
+        <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
+          <h3 className="text-xl font-semibold dark:text-zinc-50">Sign In</h3>
+          <p className="text-sm text-gray-500 dark:text-zinc-400">
+            Use your email and password to sign in
+          </p>
+        </div>
+        <AuthForm action={handleSubmit} defaultEmail={email}>
+          <SubmitButton>Sign in</SubmitButton>
+          <p className="mt-4 text-center text-sm text-gray-600 dark:text-zinc-400">
+            {"Don't have an account? "}
+            <Link
+              href="/register"
+              className="font-semibold text-gray-800 hover:underline dark:text-zinc-200"
+            >
+              Sign up
+            </Link>
+            {' for free.'}
+          </p>
+        </AuthForm>
+      </div>
+      <div className="flex w-full max-w-md flex-col gap-12 overflow-hidden rounded-2xl">
         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
           <h3 className="text-xl font-semibold dark:text-zinc-50">Sign Up</h3>
           <p className="text-sm text-gray-500 dark:text-zinc-400">
@@ -52,7 +70,7 @@ export default function Page() {
         </div>
         <AuthForm action={handleSubmit} defaultEmail={email}>
           <SubmitButton>Sign Up</SubmitButton>
-          <p className="text-center text-sm text-gray-600 mt-4 dark:text-zinc-400">
+          <p className="mt-4 text-center text-sm text-gray-600 dark:text-zinc-400">
             {'Already have an account? '}
             <Link
               href="/login"

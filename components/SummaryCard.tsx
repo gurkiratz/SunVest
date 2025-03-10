@@ -52,7 +52,7 @@ export function SummaryCard({ summary = SAMPLE }: SummaryCardPops) {
 
   return (
     <>
-      <Card className="w-full max-w-3xl mx-auto">
+      <Card className="mx-auto w-full max-w-3xl">
         <CardHeader
           className={`${
             isSuccess
@@ -68,9 +68,9 @@ export function SummaryCard({ summary = SAMPLE }: SummaryCardPops) {
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className={`w-6 h-6 ${
+                  className={`size-6 ${
                     i < starCount
-                      ? 'text-yellow-400 fill-current'
+                      ? 'fill-current text-yellow-400'
                       : 'text-gray-300'
                   }`}
                 />
@@ -80,8 +80,8 @@ export function SummaryCard({ summary = SAMPLE }: SummaryCardPops) {
         </CardHeader>
         <CardContent className="mt-4 space-y-6">
           <div>
-            <h3 className="text-lg font-semibold mb-2 flex items-center">
-              <AlertTriangle className="w-5 h-5 mr-2 text-red-500" />
+            <h3 className="mb-2 flex items-center text-lg font-semibold">
+              <AlertTriangle className="mr-2 size-5 text-red-500" />
               Security Red Flags
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -94,11 +94,11 @@ export function SummaryCard({ summary = SAMPLE }: SummaryCardPops) {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-2 flex items-center">
-              <Zap className="w-5 h-5 mr-2 text-yellow-500" />
+            <h3 className="mb-2 flex items-center text-lg font-semibold">
+              <Zap className="mr-2 size-5 text-yellow-500" />
               Tactics Used
             </h3>
-            <ul className="list-disc list-inside">
+            <ul className="list-inside list-disc">
               {summary.tactics.map((tactic, index) => (
                 <li key={index}>{tactic}</li>
               ))}
@@ -106,11 +106,11 @@ export function SummaryCard({ summary = SAMPLE }: SummaryCardPops) {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-2 flex items-center">
-              <Check className="w-5 h-5 mr-2 text-green-500" />
+            <h3 className="mb-2 flex items-center text-lg font-semibold">
+              <Check className="mr-2 size-5 text-green-500" />
               Areas for Improvement
             </h3>
-            <ul className="list-disc list-inside">
+            <ul className="list-inside list-disc">
               {summary.improvement.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
@@ -118,14 +118,14 @@ export function SummaryCard({ summary = SAMPLE }: SummaryCardPops) {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-2 flex items-center">
-              <BookOpen className="w-5 h-5 mr-2 text-blue-500" />
+            <h3 className="mb-2 flex items-center text-lg font-semibold">
+              <BookOpen className="mr-2 size-5 text-blue-500" />
               Helpful Resources
             </h3>
             <ul className="space-y-1">
               {summary.resources.map((resource, index) => (
                 <li key={index} className="flex items-center">
-                  <ExternalLink className="w-4 h-4 mr-2 text-blue-500" />
+                  <ExternalLink className="mr-2 size-4 text-blue-500" />
                   <a
                     href={resource}
                     target="_blank"
@@ -143,7 +143,7 @@ export function SummaryCard({ summary = SAMPLE }: SummaryCardPops) {
       <Button
         asChild
         variant={'secondary'}
-        className="bg-yellow-600/80 hover:bg-yellow-700 mt-4"
+        className="mt-4 bg-yellow-600/80 hover:bg-yellow-700"
       >
         <Link href="/">Try a new scenario</Link>
       </Button>

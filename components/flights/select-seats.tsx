@@ -68,18 +68,18 @@ export function SelectSeats({
   });
 
   return (
-    <div className="flex flex-col gap-2 bg-muted rounded-lg">
-      <div className="flex flex-col gap-4 scale-75">
-        <div className="flex flex-row w-full justify-between text-muted-foreground">
+    <div className="flex flex-col gap-2 rounded-lg bg-muted">
+      <div className="flex scale-75 flex-col gap-4">
+        <div className="flex w-full flex-row justify-between text-muted-foreground">
           <div className="flex flex-row">
-            <div className="w-[45px] sm:w-[54px] text-center">A</div>
-            <div className="w-[45px] sm:w-[54px] text-center">B</div>
-            <div className="w-[45px] sm:w-[54px] text-center">C</div>
+            <div className="w-[45px] text-center sm:w-[54px]">A</div>
+            <div className="w-[45px] text-center sm:w-[54px]">B</div>
+            <div className="w-[45px] text-center sm:w-[54px]">C</div>
           </div>
           <div className="flex flex-row">
-            <div className="w-[45px] sm:w-[54px] text-center">D</div>
-            <div className="w-[45px] sm:w-[54px] text-center">E</div>
-            <div className="w-[45px] sm:w-[54px] text-center">F</div>
+            <div className="w-[45px] text-center sm:w-[54px]">D</div>
+            <div className="w-[45px] text-center sm:w-[54px]">E</div>
+            <div className="w-[45px] text-center sm:w-[54px]">F</div>
           </div>
         </div>
 
@@ -88,7 +88,7 @@ export function SelectSeats({
             {row.map((seat, seatIndex) => (
               <>
                 {seatIndex === 3 ? (
-                  <div className="flex flex-row items-center justify-center w-full text-muted-foreground">
+                  <div className="flex w-full flex-row items-center justify-center text-muted-foreground">
                     {index + 1}
                   </div>
                 ) : null}
@@ -125,16 +125,16 @@ export function SelectSeats({
         ))}
       </div>
 
-      <div className="flex flex-row gap-4 justify-center pb-6">
+      <div className="flex flex-row justify-center gap-4 pb-6">
         <div className="flex flex-row items-center gap-2">
-          <div className="size-4 bg-blue-500 rounded-sm" />
-          <div className="text text-muted-foreground font-medium text-sm">
+          <div className="size-4 rounded-sm bg-blue-500" />
+          <div className="text text-sm font-medium text-muted-foreground">
             Available
           </div>
         </div>
         <div className="flex flex-row items-center gap-2">
-          <div className="size-4 bg-gray-500 rounded-sm" />
-          <div className="text text-muted-foreground font-medium text-sm">
+          <div className="size-4 rounded-sm bg-gray-500" />
+          <div className="text text-sm font-medium text-muted-foreground">
             Unavailable
           </div>
         </div>

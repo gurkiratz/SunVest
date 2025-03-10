@@ -42,11 +42,11 @@ export function Chat({
 
   const [attachments, setAttachments] = useState<Array<Attachment>>([])
   return (
-    <div className="flex flex-row justify-center pb-4 md:pb-8 h-dvh bg-background">
-      <div className="flex flex-col justify-between items-center gap-4">
+    <div className="flex h-dvh flex-row justify-center bg-background pb-4 md:pb-8">
+      <div className="flex flex-col items-center justify-between gap-4">
         <div
           ref={messagesContainerRef}
-          className="flex flex-col gap-4 h-full w-dvw items-center overflow-y-scroll"
+          className="flex h-full w-dvw flex-col items-center gap-4 overflow-y-scroll"
         >
           {/* <Overview {...messages[0]} /> */}
           {messages.length <= 1 ? (
@@ -64,7 +64,7 @@ export function Chat({
               </Button>
             </>
           ) : (
-            <div className="max-w-[500px] mt-20 mx-4 md:mx-0 dark:bg-zinc-500/10 bg-zinc-200/30 rounded p-4">
+            <div className="mx-4 mt-20 max-w-[500px] rounded bg-zinc-200/30 p-4 dark:bg-zinc-500/10 md:mx-0">
               <h3 className="text-lg">Scenario</h3>
               <p className=" text-xl font-semibold">
                 {getScenarioDescription(messages[0])}
@@ -91,11 +91,11 @@ export function Chat({
 
           <div
             ref={messagesEndRef}
-            className="shrink-0 min-w-[24px] min-h-[24px]"
+            className="min-h-[24px] min-w-[24px] shrink-0"
           />
         </div>
 
-        <form className="flex flex-row gap-2 relative items-end w-full md:max-w-[500px] max-w-[calc(100dvw-32px) px-4 md:px-0">
+        <form className="max-w-[calc(100dvw-32px) relative flex w-full flex-row items-end gap-2 px-4 md:max-w-[500px] md:px-0">
           <MultimodalInput
             disabled={disabled}
             input={input}
